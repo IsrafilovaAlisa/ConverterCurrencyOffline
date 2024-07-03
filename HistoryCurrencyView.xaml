@@ -1,0 +1,31 @@
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="utf.HistoryCurrencyView"
+             Title="История переводов">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackLayout Grid.Column="0" Orientation="Vertical">
+            <Label Text="Заметки"/>
+            <ListView SelectedItem="{Binding BehaviorDeleteCurrency, Mode=TwoWay}" ItemsSource="{Binding ColumnCurrencyDelete}" SelectionMode="Single">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Label FontSize="22" Text="{Binding HistoryCurrencyDeletePage}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+        <StackLayout Grid.Column="1"  Orientation="Vertical">
+            <Label Text="Удаление заметки"/>
+            <Button Text="Удалить" Command="{Binding DeleteCurrencyNote}"/>
+
+
+        </StackLayout>
+
+    </Grid>
+
+</ContentPage>

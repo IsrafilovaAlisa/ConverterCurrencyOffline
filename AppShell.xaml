@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="utf.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:utf"
+    Shell.FlyoutBehavior="Flyout"
+    Title="utf">
+
+    <TabBar>
+        <ShellContent
+     Title="Главная страница"
+     ContentTemplate="{DataTemplate local:MainPage}"
+     Route="MainPage" />
+        <ShellContent
+            Title="Страница для ввода и удаления валюты"
+            ContentTemplate="{DataTemplate local:HistoryCurrencyView}"
+            Route="HistoryCurrency"/>
+        
+
+    </TabBar>
+
+
+</Shell>
