@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Net.Http.Json;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
 using utf.Models;
@@ -173,12 +174,11 @@ namespace utf
         {
             var cl = new HttpClient();
             var response = cl.GetFromJsonAsync<CurrencyModel>(URLApi).Result;
-            var result = response;/*.Data.Eur;*/
+            //var result = response;
 
             var EUR = response.Data.Eur;
             var USD = response.Data.Usd;
             var CAD = response.Data.Cad;
-            _ = 0;
 
             changeCur = new Dictionary<string, double>()
             {
@@ -198,6 +198,7 @@ namespace utf
                 ConvertedCurrencies = saved;
 
             }
+
 
 
 
@@ -300,11 +301,11 @@ namespace utf
                 var UpdateCurrencyDelete = ContainerConvertedCurrency;
                 var a = string.Join(", ", UpdateCurrencyDelete);
                 ConvertedCurrencies = a;
-                _ = 0;
             }
-            
+
             //HistoryCurrencyDeletePage = HistoryConvertCurrency.Remove(0);
         }
+
 
 
 

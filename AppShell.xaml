@@ -16,7 +16,11 @@
             Title="Страница для ввода и удаления валюты"
             ContentTemplate="{DataTemplate local:HistoryCurrencyView}"
             Route="HistoryCurrency"/>
-        
+        <ShellContent
+            Title="МОИ Покупки"
+            ContentTemplate="{DataTemplate local:DataBase.FramePurchases}"
+            Route="LocalPurchases"/>
+
 
     </TabBar>
 

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="utf.HistoryCurrencyView"
              Title="История переводов">
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -13,7 +14,7 @@
             <ListView SelectedItem="{Binding BehaviorDeleteCurrency, Mode=TwoWay}" ItemsSource="{Binding ColumnCurrencyDelete}" SelectionMode="Single">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Label FontSize="22" Text="{Binding HistoryCurrencyDeletePage}"/>
+                        <Label TextColor="White" Text="{Binding HistoryCurrencyDeletePage}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
