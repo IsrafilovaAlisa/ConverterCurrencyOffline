@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Net.Http.Json;
 using System.Windows.Input;
+using utf.Models;
 
 namespace utf.DataBase
 {
@@ -12,13 +14,18 @@ namespace utf.DataBase
         private int inputPrice;
         private ICommand savePurchase;
         private string getElementPurchases;
-        private ObservableCollection<string> dataPurchases;
         private ICommand showHistoryPurchases;
         private string purchasesHist;
         private int priceHist;
         private ICommand deleteFromHistory;
-        private string behaviorDeletePurchases;
+        private Dictionary<string, double> convertedCurrency;
+        private object selectedConvertation;
 
+        private const string APIKey = "fca_live_LAfEb6eP0tqbK1r5ML0P4PVKOTRiOqqDIKCQDP6k";
+        private const string URLApi = "https://api.freecurrencyapi.com/v1/latest?apikey=" + APIKey + "&currencies=EUR,USD,CAD&base_currency=RUB";
+
+
+        #region ИНИЦИАЛИЗАЦИЯ СВОЙСТВ
         public string InputPurchase
         {
             get => inputPurchase;
@@ -94,11 +101,21 @@ namespace utf.DataBase
                 OnPropertyChanged(nameof(DeleteFromHistory));
             }
         }
+        public object SelectedConvertation
+        {
+            get => selectedConvertation;
+            set
+            {
+                selectedConvertation = value;
+                OnPropertyChanged(nameof(SelectedConvertation));
+            }
+        }
+        #endregion
         public ObservableCollection<object> BehaviorDeletePurchases { get; set; } = new();
 
-        //public ObservableCollection<somedata> SavesCollectionElementsPurchases { get; set; } = new();       
         //public ObservableCollection<Purchases> SavesCollectionElementsPurchases { get; set; } = new();
         public ObservableCollection<Purchases> DataPurchases { get; set; } = new();
+        public ObservableCollection<string> ConvertedCurrency { get; set; } = new();
 
         public InformationABTPurchases()
         {
@@ -110,8 +127,24 @@ namespace utf.DataBase
             DeleteFromHistory = new Command(DeleteElementHistory);
             ShowDBPurchases();
 
+            var cl = new HttpClient();
+            var response = cl.GetFromJsonAsync<CurrencyModel>(URLApi).Result;
+
+
+            var EUR = response.Data.Eur;
+            var USD = response.Data.Usd;
+            var CAD = response.Data.Cad;
+
+            convertedCurrency = new Dictionary<string, double>()
+            {
+                {"USD" , USD },
+                {"CAD", CAD },
+                {"EUR", EUR},
+
+            };
+            ConvertedCurrency = new ObservableCollection<string>(convertedCurrency.Keys);
         }
-        public static void save(Purchases pur)
+        public static void Save(Purchases pur)
         {
             using (MyDbContext context = new MyDbContext())
             {
@@ -122,11 +155,30 @@ namespace utf.DataBase
 
         public void SaveMagazine()
         {
-            if (string.IsNullOrEmpty(InputPurchase) || string.IsNullOrEmpty(InputPurchase) == false)
+            if (string.IsNullOrEmpty(InputPurchase) == false || InputPrice == null == false || InputPrice == 1 == false)
             {
-                var newPurchase = new Purchases { Purchase = InputPurchase, PriceRUB = InputPrice };
-                save(newPurchase);
-                DataPurchases.Add(newPurchase);
+                var ConvertedInputPrice = InputPrice * (SelectedConvertation switch
+                {
+                    "USD" => convertedCurrency["USD"],
+                    "EUR" => convertedCurrency["EUR"],
+                    "CAD" => convertedCurrency["CAD"],
+                    _ => 0
+                });
+                if (string.IsNullOrEmpty(InputPurchase) == true)
+                {
+                    var newPurchase = new Purchases { Purchase = "Не введено значение", PriceRUB = InputPrice, PriceConverted = ConvertedInputPrice };
+                    Save(newPurchase);
+                    DataPurchases.Add(newPurchase);
+                }
+                if (InputPrice == null || InputPrice == 1)
+                {
+                    var newPurchase = new Purchases { Purchase = InputPurchase, PriceRUB = 0, PriceConverted = ConvertedInputPrice };
+                    Save(newPurchase);
+                    DataPurchases.Add(newPurchase);
+                }
+                //var newPurchase = new Purchases { Purchase = InputPurchase, PriceRUB = InputPrice, PriceConverted = ConvertedInputPrice };
+                //Save(newPurchase);
+                //DataPurchases.Add(newPurchase);
             }
         }
         public void ShowDBPurchases()
@@ -156,10 +208,8 @@ namespace utf.DataBase
                     DataPurchases.Add(element);
                 }
             }
-
         }
         public void DeleteElementHistory()
-
         {
             using (MyDbContext context = new MyDbContext())
             {
@@ -178,12 +228,7 @@ namespace utf.DataBase
                 }
             }
             ShowDBPurchases();
-
         }
-
-
-
     }
-
 }
 

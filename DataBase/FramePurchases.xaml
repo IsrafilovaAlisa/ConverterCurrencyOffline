@@ -17,7 +17,7 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal" toolkit:DockLayout.DockPosition="Top">
                 <Label WidthRequest="345" FontSize="17" Text="Выберите валюту в которую конвертировать"/>
-                <Picker />
+                <Picker SelectedItem="{Binding SelectedConvertation}" ItemsSource="{Binding ConvertedCurrency}" />
             </StackLayout>
             <!--<StackLayout Orientation="Vertical">
                     <Button Text="СОХРАНИТЬ" Command="{Binding SavePurchase}"/>
@@ -50,9 +50,17 @@
                                 <StackLayout Orientation="Horizontal">
                                     <Border>
                                         <StackLayout Orientation="Horizontal">
+                                            <StackLayout.Resources>
+                                                <ResourceDictionary>
+                                                    <Style TargetType="Label">
+                                                        <Setter Property="Margin" Value="0, 0, 10, 0" />
+                                                    </Style>
+                                                </ResourceDictionary>
+                                            </StackLayout.Resources>
                                             <Label Text="{Binding ID}"/>
-                                            <Label Margin="10, 0" Text="{Binding Purchase}"/>
-                                            <Label Text="{Binding PriceRUB}"/>
+                                            <Label Text="{Binding Purchase, StringFormat='Покупка - {0}, '}"/>
+                                            <Label Text="{Binding PriceRUB, StringFormat='цена покупки - {0}, '}"/>
+                                            <Label Text="{Binding PriceConverted, StringFormat='перевод цены - {0}'}"/>
                                         </StackLayout>
                                     </Border>
                                 </StackLayout>
