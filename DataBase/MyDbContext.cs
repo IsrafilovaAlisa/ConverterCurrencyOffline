@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using utf.Models;
 
 
 namespace utf.DataBase
@@ -6,7 +7,7 @@ namespace utf.DataBase
     public class MyDbContext : DbContext
     {
         public DbSet<Purchases> Purchases { get; set; }
-
+        public DbSet<ConvertCurrencyModel> ConvertCurrency { get; set; }
         public MyDbContext()
         {
            // Database.EnsureDeleted();

@@ -9,43 +9,29 @@
             <StackLayout Orientation="Vertical">
                 <Image Source="dollar.png" WidthRequest="150"/>
                 <Entry Placeholder="Введите сумму"
-                       FontSize="22" Margin="10" WidthRequest="220" Text="{Binding Currency}"/>
+                FontSize="22" Margin="10" WidthRequest="220" Text="{Binding MoneyInRUB}"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Label FontSize="22" Text="{Binding BigMoney}"/>
-                <Picker SelectedItem="{Binding SelectedCur}" ItemDisplayBinding="{Binding}" IsVisible="{Binding IsVisible}" ItemsSource="{Binding ChangeCur}" Margin="3"/>
+                <!--<Label FontSize="22" Text="{Binding RepeatMoneyInRUB}"/>-->
+                <Label FontSize="25" Text="Выберите валюту:"/>
+                <Picker SelectedItem="{Binding SelectedTargetCurrency}"  IsVisible="{Binding VisiblePickerTargetCurrency}" ItemsSource="{Binding CurrencyConverter.KeysOtherCurrency}" Margin="3"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Orientation="Vertical">
+                <Button Text="Конвертация" Command="{Binding StartConvertCommand}"/>
                 <Label FontSize="25" Text="Вывод валюты:"/>
-                <Label FontSize="30" Margin="5" Text="{Binding ConverterMaster}"
-                       IsVisible="{Binding VisibleConverterMaster}"/>
+                <CollectionView ItemsSource="{Binding MagazineConversionsDB}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal">
+                                <!--<Label FontSize="30" Text="{Binding ShowConvertFromRUB, StringFormat='{0} рублей ->'}"/>-->
+                                <Label FontSize="30" Margin="5, 0" Text="{Binding }" IsVisible="{Binding VisibleConvertedCurrency}"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </StackLayout>
-            <Button Text="Сохранить" Command="{Binding SaveCurrency}"/>
-            <Border Margin="15" Stroke="Purple" StrokeThickness="2" >
-                <Label  FontSize="25" Text="{Binding ConvertedCurrencies}"/>
-            </Border>
-
-
-            <!--<StackLayout Orientation="Horizontal">
-                <Label FontSize="25" Background="Red" Text="{Binding ConverterCurrency, StringFormat='будет {0}'}"/>
-                <Label IsVisible="{Binding VisibleError}" TextColor="red" Text="{Binding ErrorConvertCurrency}"></Label>
-            </StackLayout>-->
         </StackLayout>
-        <!--<Grid 
-            Padding="30,0">
-            <Grid.RowDefinitions>
-                
-            </Grid.RowDefinitions>
-            <VerticalStackLayout Margin="10">
-                <Image
-                Source="dollar.png"
-                WidthRequest="150"/>
-                <Entry
-                 Placeholder="Введите сумму"
-                 FontSize="22" x:Name="AmountSum" TextChanged="newCurrency"/>
-            </VerticalStackLayout>
-        </Grid>-->
-
+       
     </ScrollView>
 
 </ContentPage>

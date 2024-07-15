@@ -7,6 +7,7 @@ using System.Globalization;
 
 namespace utf.Models
 {
+    /// <summary> модель для определения целевой валюты </summary>
     public partial class CurrencyModel
     {
         [JsonPropertyName("data")]
