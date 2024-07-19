@@ -8,24 +8,56 @@
         <StackLayout>
             <StackLayout Orientation="Vertical">
                 <Image Source="dollar.png" WidthRequest="150"/>
-                <Entry Placeholder="Введите сумму"
-                FontSize="22" Margin="10" WidthRequest="220" Text="{Binding MoneyInRUB}"/>
+                
+                
+                <!--<Entry Placeholder="Введите сумму"
+                FontSize="22" Margin="10" Text="{Binding MoneyInRUB}"/>-->
+                
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <!--<Label FontSize="22" Text="{Binding RepeatMoneyInRUB}"/>-->
+            <FlexLayout Margin="5,5" Wrap="Wrap">
+                <!--<Border>
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8"/>
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Entry Text="{Binding MoneyInRUB}" MinimumWidthRequest="130" Placeholder="Ввод"/>
+                        <Picker SelectedItem="{Binding FromSelectedTargetCurrency}" ItemsSource="{Binding CurrencyConverter.KeysOtherCurrency}" HorizontalOptions="EndAndExpand"/>
+                    </Grid>
+                </Border>
+                <Button WidthRequest="40" HeightRequest="40" Margin="5, 5" Text="Поменять">
+                </Button>
+                <Border>
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8"/>
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Entry Text="{Binding MoneyInOther}" MinimumWidthRequest="130" Placeholder="Ввод"/>
+                        <Picker SelectedItem="{Binding WhereSelectedTargetCurrency}" ItemsSource="{Binding CurrencyConverter.KeysOtherCurrency}" HorizontalOptions="EndAndExpand"/>
+                    </Grid>
+                </Border>-->
+                <StackLayout Orientation="Vertical">
+                     <Entry Text="{Binding InputAmount}" FontSize="20" Placeholder="Введите сумму"/>
                 <Label FontSize="25" Text="Выберите валюту:"/>
-                <Picker SelectedItem="{Binding SelectedTargetCurrency}"  IsVisible="{Binding VisiblePickerTargetCurrency}" ItemsSource="{Binding CurrencyConverter.KeysOtherCurrency}" Margin="3"/>
-            </StackLayout>
-            <StackLayout Orientation="Vertical">
+                <Picker SelectedItem="{Binding FromSelectedTargetCurrency}"  ItemsSource="{Binding CurrencyConverter.KeysOtherCurrency}" Margin="3"/>
+                <Label FontSize="25" Text="Выберите в какую валюту перевести:"/>
+                <Picker SelectedItem="{Binding WhereSelectedTargetCurrency}" ItemsSource="{Binding CurrencyConverter.KeysOtherCurrency}" Margin="3"/>
+                </StackLayout>
+               
+            </FlexLayout>
+            <StackLayout Margin="5,5" Orientation="Vertical">
                 <Button Text="Конвертация" Command="{Binding StartConvertCommand}"/>
+                <!--<Button Text="тест" Command="{Binding TestPopupCommand}"/>-->
                 <Label FontSize="25" Text="Вывод валюты:"/>
                 <CollectionView ItemsSource="{Binding MagazineConversionsDB}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout Orientation="Horizontal">
+                            <FlexLayout Wrap="Wrap">
+                                <Border Padding="6">
+                                    <Label FontSize="21" Margin="5, 0" Text="{Binding }" IsVisible="{Binding VisibleConvertedCurrency}"/>
+                                </Border>
                                 <!--<Label FontSize="30" Text="{Binding ShowConvertFromRUB, StringFormat='{0} рублей ->'}"/>-->
-                                <Label FontSize="30" Margin="5, 0" Text="{Binding }" IsVisible="{Binding VisibleConvertedCurrency}"/>
-                            </StackLayout>
+                                
+                            </FlexLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

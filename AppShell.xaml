@@ -4,14 +4,14 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:utf"
-    Shell.FlyoutBehavior="Flyout"
+    Shell.FlyoutBehavior="Disabled"
     Title="utf">
 
     <TabBar>
         <ShellContent
-     Title="Главная страница"
-     ContentTemplate="{DataTemplate local:MainPage}"
-     Route="MainPage" />
+            Title="Главная страница"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage"/>
         <ShellContent
             Title="Страница для ввода и удаления валюты"
             ContentTemplate="{DataTemplate local:HistoryCurrencyView}"
@@ -20,9 +20,12 @@
             Title="МОИ Покупки"
             ContentTemplate="{DataTemplate local:DataBase.FramePurchases}"
             Route="LocalPurchases"/>
-
+        <ShellContent 
+            Title="Новая страничка" 
+            ContentTemplate="{DataTemplate local:NewPageTest}"
+            Route="New"
+            IsVisible="False"/>
 
     </TabBar>
-
 
 </Shell>

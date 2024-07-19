@@ -10,7 +10,7 @@ namespace utf.DataBase
         public DbSet<ConvertCurrencyModel> ConvertCurrency { get; set; }
         public MyDbContext()
         {
-           // Database.EnsureDeleted();
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 

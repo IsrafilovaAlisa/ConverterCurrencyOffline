@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Net.Http.Json;
 using System.Windows.Input;
-using utf.APIService;
+using utf.Service;
 using utf.Models;
 
 namespace utf.DataBase
@@ -25,6 +25,9 @@ namespace utf.DataBase
         /// <summary> Выбранная целевая валюта </summary>
         [ObservableProperty]
         public object selectedConvertation;
+        /// <summary> Дата когда была совершена покупка </summary>
+        [ObservableProperty]
+        public DateTime dateOfPurchase = DateTime.Now;
 
         /// <summary> Коллекция для поведения удаления элементов </summary>
         public ObservableCollection<object> BehaviorDeletePurchases { get; set; } = new();
@@ -49,11 +52,11 @@ namespace utf.DataBase
         [RelayCommand]
         public void SavePurchase()
         {
-            if (string.IsNullOrEmpty(InputPurchase) == false || InputPrice == null == false || InputPrice == 1 == false)
+            if (string.IsNullOrEmpty(InputPurchase) == false || /*InputPrice == null == false ||*/ InputPrice == 1 == false)
             {
                 if (SelectedConvertation == null)
                 {
-                    var newPurchase1 = new Purchases { Purchase = InputPurchase, PriceRUB = InputPrice, PriceConverted = 0 };
+                    var newPurchase1 = new Purchases { Purchase = InputPurchase, PriceRUB = InputPrice, PriceConverted = 0, DatePurchase =  DateOfPurchase.Date};
                     Save(newPurchase1);
                     DataPurchases.Add(newPurchase1);
                 }
@@ -61,7 +64,7 @@ namespace utf.DataBase
                 {
                     var ConvertedInputPrice = CurrencyConverter.Convert(InputPrice, SelectedConvertation.ToString());
 
-                    var newPurchase = new Purchases { Purchase = InputPurchase, PriceRUB = InputPrice, PriceConverted = ConvertedInputPrice };
+                    var newPurchase = new Purchases { Purchase = InputPurchase, PriceRUB = InputPrice, PriceConverted = ConvertedInputPrice, DatePurchase = DateOfPurchase };
                     Save(newPurchase);
                     DataPurchases.Add(newPurchase);
                 }
@@ -75,6 +78,7 @@ namespace utf.DataBase
             }
 
         }
+        /// <summary> История покупок </summary>
         [RelayCommand]
         public void ShowDBPurchases()
         {
@@ -82,6 +86,7 @@ namespace utf.DataBase
             {
                 //context.Purchases.RemoveRange(context.Purchases);
                 //context.SaveChanges();
+                
                 DataPurchases.Clear();
                 foreach (var element in context.Purchases)
                 {

@@ -9,9 +9,10 @@ namespace utf
             InitializeComponent();
 
             Routing.RegisterRoute("HistoryCurrency", typeof(HistoryCurrencyView));
-            //Routing.RegisterRoute("API", typeof(ServiceAPIKey));
             Routing.RegisterRoute("LocalPurchases", typeof(FramePurchases));
-            
+            // Routing.RegisterRoute("New", typeof(NewPageTest));
+           
         }
+       
     }
 }

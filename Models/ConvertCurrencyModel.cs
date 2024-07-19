@@ -11,7 +11,7 @@ namespace utf.Models
         public double? OtherCurrency { get; set; }
         public override string ToString()
         {
-            return "Введенная сумма(в рублях) - " + (RUB.HasValue ? RUB.Value.ToString() : "Нет") +
+            return "Введенная сумма - " + (RUB.HasValue ? RUB.Value.ToString() : "Нет") +
                 "; " + "Конвертация - " + (OtherCurrency.HasValue ? OtherCurrency.Value.ToString() : "Нет");
         }
     }
