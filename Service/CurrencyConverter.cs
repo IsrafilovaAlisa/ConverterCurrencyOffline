@@ -46,7 +46,7 @@ namespace utf.Service
         /// заполнение словарика с курсами валют
         /// </summary>
         /// <param name="data">валюта</param>
-        private void FillCurrencyDictionary(Data data)
+        public void FillCurrencyDictionary(Data data)
         {
             otherCurrency = new Dictionary<string, double>();
             if(data != null)
@@ -59,7 +59,6 @@ namespace utf.Service
                         double value = (double)property.GetValue(data);
                         otherCurrency.Add(key, value);
                     }
-                    _ = 0;
                 }
             }
         }

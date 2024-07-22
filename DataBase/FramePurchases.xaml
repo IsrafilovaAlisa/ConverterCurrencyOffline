@@ -61,7 +61,8 @@
                                         <Label Text="{Binding Purchase, StringFormat='Покупка - {0}, '}"/>
                                         <Label Text="{Binding PriceRUB, StringFormat='цена покупки - {0}, '}"/>
                                         <Label Text="{Binding PriceConverted, StringFormat='перевод цены - {0}, '}"/>
-                                        <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:dd MMMM yyyy, HH:mm}'}"/>
+                                        <!--<Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:dd MMMM yyyy, HH:mm}'}"/>-->
+                                        <Label Text="{Binding DatePurchase, StringFormat='{0:dd MMMM yyyy, HH:mm}'}"/>
                                     </FlexLayout>
                                 </Border>
                             </DataTemplate>

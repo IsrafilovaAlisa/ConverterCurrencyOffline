@@ -1,4 +1,6 @@
 ﻿using SQLite;
+using System.Diagnostics;
+using utf.Service;
 
 namespace utf.Models
 {
@@ -9,10 +11,17 @@ namespace utf.Models
         public int ID { get; set; }
         public double? RUB { get; set; }
         public double? OtherCurrency { get; set; }
+
+        public string CurrencyFrom { get; set; }
+        public string CurrencyTo { get; set; }
+
         public override string ToString()
         {
-            return "Введенная сумма - " + (RUB.HasValue ? RUB.Value.ToString() : "Нет") +
-                "; " + "Конвертация - " + (OtherCurrency.HasValue ? OtherCurrency.Value.ToString() : "Нет");
+            return $"Введенная сумма ({CurrencyFrom}) - " + (RUB.HasValue ? RUB.Value.ToString() : "Нет") +
+                "; " + $"Конвертация ({CurrencyTo}) - " + (OtherCurrency.HasValue ? OtherCurrency.Value.ToString("F2") : "Нет");
+            
         }
+        
+        
     }
 }

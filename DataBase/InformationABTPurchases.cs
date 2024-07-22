@@ -25,9 +25,6 @@ namespace utf.DataBase
         /// <summary> Выбранная целевая валюта </summary>
         [ObservableProperty]
         public object selectedConvertation;
-        /// <summary> Дата когда была совершена покупка </summary>
-        [ObservableProperty]
-        public DateTime dateOfPurchase = DateTime.Now;
 
         /// <summary> Коллекция для поведения удаления элементов </summary>
         public ObservableCollection<object> BehaviorDeletePurchases { get; set; } = new();
@@ -52,11 +49,11 @@ namespace utf.DataBase
         [RelayCommand]
         public void SavePurchase()
         {
-            if (string.IsNullOrEmpty(InputPurchase) == false || /*InputPrice == null == false ||*/ InputPrice == 1 == false)
+            if (string.IsNullOrEmpty(InputPurchase) == false || InputPrice == 1 == false)
             {
                 if (SelectedConvertation == null)
                 {
-                    var newPurchase1 = new Purchases { Purchase = InputPurchase, PriceRUB = InputPrice, PriceConverted = 0, DatePurchase =  DateOfPurchase.Date};
+                    var newPurchase1 = new Purchases { Purchase = InputPurchase, PriceRUB = InputPrice, PriceConverted = 0, DatePurchase = DateTime.Now };
                     Save(newPurchase1);
                     DataPurchases.Add(newPurchase1);
                 }
@@ -64,19 +61,11 @@ namespace utf.DataBase
                 {
                     var ConvertedInputPrice = CurrencyConverter.Convert(InputPrice, SelectedConvertation.ToString());
 
-                    var newPurchase = new Purchases { Purchase = InputPurchase, PriceRUB = InputPrice, PriceConverted = ConvertedInputPrice, DatePurchase = DateOfPurchase };
+                    var newPurchase = new Purchases { Purchase = InputPurchase, PriceRUB = InputPrice, PriceConverted = ConvertedInputPrice, DatePurchase = DateTime.Now };
                     Save(newPurchase);
                     DataPurchases.Add(newPurchase);
                 }
-                    //var newPurchase = new Purchases { Purchase = InputPurchase, PriceRUB = 0, PriceConverted = ConvertedInputPrice };
-                    //Save(newPurchase);
-                    //DataPurchases.Add(newPurchase);
-                
-                //var newPurchase = new Purchases { Purchase = InputPurchase, PriceRUB = InputPrice, PriceConverted = ConvertedInputPrice };
-                //Save(newPurchase);
-                //DataPurchases.Add(newPurchase);
             }
-
         }
         /// <summary> История покупок </summary>
         [RelayCommand]

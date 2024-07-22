@@ -63,11 +63,8 @@ namespace utf
                 ShowConvertFromRUB = InputAmount;
                 //ConvertedCurrency = ConvertedInputPrice;
                 ConvertedCurrency = Converting;
-                //double[] ArrayMagazineConvert = new double[] { ShowConvertFromRUB, ConvertedCurrency };
-                //var RubToTargetCurrency = string.Join(" ", ArrayMagazineConvert);
-                //MagazineConversions.Add(RubToTargetCurrency);
-
-                var MagazineConvert = new ConvertCurrencyModel { RUB = InputAmount, OtherCurrency = ConvertedCurrency };
+                
+                var MagazineConvert = new ConvertCurrencyModel { RUB = InputAmount, CurrencyFrom = FromSelectedTargetCurrency, OtherCurrency = ConvertedCurrency, CurrencyTo = WhereSelectedTargetCurrency };
                 Save(MagazineConvert);
                 MagazineConversionsDB.Add(MagazineConvert);
             }
