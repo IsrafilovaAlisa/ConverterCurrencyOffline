@@ -18,6 +18,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Button Command="{Binding ToPageCommand}"/>
 
         </StackLayout>
         <StackLayout Grid.Column="1"  Orientation="Vertical">

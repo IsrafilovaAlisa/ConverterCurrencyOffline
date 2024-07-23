@@ -10,6 +10,7 @@ using utf.DataBase;
 using utf.Models;
 using utf.AlertPopup;
 using CommunityToolkit.Maui.Views;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace utf
 {
@@ -96,6 +97,11 @@ namespace utf
                     MagazineConversionsDB.Add(element);
                 }
             }
+        }
+        [RelayCommand]
+        public async void ToPage()
+        {
+            await Shell.Current.GoToAsync("LocalPurchases");
         }
     }
 }

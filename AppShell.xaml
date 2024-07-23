@@ -20,12 +20,6 @@
             Title="МОИ Покупки"
             ContentTemplate="{DataTemplate local:DataBase.FramePurchases}"
             Route="LocalPurchases"/>
-        <ShellContent 
-            Title="Новая страничка" 
-            ContentTemplate="{DataTemplate local:NewPageTest}"
-            Route="New"
-            IsVisible="False"/>
-
     </TabBar>
 
 </Shell>
