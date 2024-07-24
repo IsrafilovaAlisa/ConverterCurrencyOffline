@@ -1,4 +1,5 @@
 ﻿using utf.DataBase;
+using utf.Service;
 
 namespace utf
 {
@@ -8,9 +9,8 @@ namespace utf
         {
             InitializeComponent();
 
-            Routing.RegisterRoute("HistoryCurrency", typeof(HistoryCurrencyView));
+            Routing.RegisterRoute("Settings", typeof(SettingsView));
             Routing.RegisterRoute("LocalPurchases", typeof(FramePurchases));
-            // Routing.RegisterRoute("New", typeof(NewPageTest));
            
         }
        

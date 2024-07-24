@@ -13,9 +13,9 @@
             ContentTemplate="{DataTemplate local:MainPage}"
             Route="MainPage"/>
         <ShellContent
-            Title="Страница для ввода и удаления валюты"
-            ContentTemplate="{DataTemplate local:HistoryCurrencyView}"
-            Route="HistoryCurrency"/>
+            Title="Настройки"
+            ContentTemplate="{DataTemplate local:Service.SettingsView}"
+            Route="Settings"/>
         <ShellContent
             Title="МОИ Покупки"
             ContentTemplate="{DataTemplate local:DataBase.FramePurchases}"

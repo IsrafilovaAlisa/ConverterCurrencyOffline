@@ -54,6 +54,7 @@
                                             <ResourceDictionary>
                                                 <Style TargetType="Label">
                                                     <Setter Property="Margin" Value="0, 0, 10, 0" />
+                                                    <Setter Property="TextColor" Value="{DynamicResource TextColorPrimary}"/>
                                                 </Style>
                                             </ResourceDictionary>
                                         </FlexLayout.Resources>
