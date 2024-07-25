@@ -21,6 +21,7 @@
             </Style>
             <Style TargetType="Picker">
                 <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColorLight}" />
+                <Setter Property="TextColor" Value="{DynamicResource TextColorPrimary}"/>
             </Style>
             <Style TargetType="Entry">
                 <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColorLight}" />
@@ -41,6 +42,9 @@
                 <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}"/>
             </Style>
             <Style TargetType="toolkit:DockLayout">
+                <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}"/>
+            </Style>
+            <Style TargetType="Border">
                 <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}"/>
             </Style>
         </ResourceDictionary>

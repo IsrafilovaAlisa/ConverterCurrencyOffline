@@ -13,7 +13,7 @@
         </Border.StrokeShape>
 
         <StackLayout Orientation="Vertical" Padding="8">
-            <Label TextColor="Black" Text="Конвертация невозможна. Введите сумму больше 1"/>
+            <Label Text="Конвертация невозможна. Введите сумму больше 1"/>
             <Button Margin="0, 15" Text="ОК" Clicked="ClosePopup"/>
         </StackLayout>
     </Border>

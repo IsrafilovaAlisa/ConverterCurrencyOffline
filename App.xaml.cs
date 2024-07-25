@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
+using System.Diagnostics;
 
 namespace utf
 {
@@ -7,12 +8,12 @@ namespace utf
         public App()
         {
             InitializeComponent();
-
-            
             MainPage = new AppShell();
             WeakReferenceMessenger.Default.Register<ThemeChangedMessage>(this, (r, m) =>
             {
-                LoadTheme(m.Value);
+                //var b = (App)r;
+                if (r is App b) b.LoadTheme(m.Value);
+                //LoadTheme(m.Value);
             });
 
             var theme = Preferences.Get("theme", "System");
