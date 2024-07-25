@@ -98,10 +98,6 @@ namespace utf
                 }
             }
         }
-        [RelayCommand]
-        public async void ToPage()
-        {
-            await Shell.Current.GoToAsync("LocalPurchases");
-        }
+        
     }
 }
