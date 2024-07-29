@@ -86,13 +86,16 @@
 	  <Compile Update="AlertPopup\InputValueError.xaml.cs">
 	    <DependentUpon>InputValueError.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\LogPurchasesView.xaml.cs">
+	    <DependentUpon>LogPurchasesView.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="AlertPopup\InputValueError.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\FramePurchases.xaml">
+	  <MauiXaml Update="Views\LogPurchasesView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\GeneralStyles.xaml">

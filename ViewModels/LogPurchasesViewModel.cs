@@ -10,10 +10,10 @@ using utf.ManagementDB;
 
 namespace utf.ViewModels
 {
-    public partial class InformationABTPurchases : ObservableObject
+    public partial class LogPurchasesViewModel : ObservableObject
     {
 
-        public static InformationABTPurchases DBInfoVM = new InformationABTPurchases();
+        public static LogPurchasesViewModel DBInfoVM = new LogPurchasesViewModel();
         public CurrencyConverter CurrencyConverter { get; }
 
         /// <summary> Ввод покупки </summary>
@@ -31,14 +31,14 @@ namespace utf.ViewModels
         public ObservableCollection<object> BehaviorDeletePurchases { get; set; } = new();
 
         /// <summary> Коллекция элементов из класса Purchases </summary>
-        public ObservableCollection<Purchases> DataPurchases { get; set; } = new();
+        public ObservableCollection<PurchasesModel> DataPurchases { get; set; } = new();
 
-        public InformationABTPurchases()
+        public LogPurchasesViewModel()
         {
             ShowDBPurchases();
             CurrencyConverter = new();
         }
-        public static void Save(Purchases pur)
+        public static void Save(PurchasesModel pur)
         {
             using (MyDbContext context = new MyDbContext())
             {
@@ -54,7 +54,7 @@ namespace utf.ViewModels
             {
                 if (SelectedConvertation == null)
                 {
-                    var newPurchase1 = new Purchases { Purchase = InputPurchase, PriceRUB = InputPrice, PriceConverted = 0, DatePurchase = DateTime.Now };
+                    var newPurchase1 = new PurchasesModel { Purchase = InputPurchase, PriceRUB = InputPrice, PriceConverted = 0, DatePurchase = DateTime.Now };
                     Save(newPurchase1);
                     DataPurchases.Add(newPurchase1);
                 }
@@ -62,7 +62,7 @@ namespace utf.ViewModels
                 {
                     var ConvertedInputPrice = CurrencyConverter.Convert(InputPrice, SelectedConvertation.ToString());
 
-                    var newPurchase = new Purchases { Purchase = InputPurchase, PriceRUB = InputPrice, PriceConverted = ConvertedInputPrice, DatePurchase = DateTime.Now };
+                    var newPurchase = new PurchasesModel { Purchase = InputPurchase, PriceRUB = InputPrice, PriceConverted = ConvertedInputPrice, DatePurchase = DateTime.Now };
                     Save(newPurchase);
                     DataPurchases.Add(newPurchase);
                 }
@@ -94,7 +94,7 @@ namespace utf.ViewModels
                     //DataPurchases.Remove(BehaviorDeletePurchases);
                     foreach (var purchase in BehaviorDeletePurchases)
                     {
-                        if (purchase is Purchases item)
+                        if (purchase is PurchasesModel item)
                         {
                             context.Purchases.Remove(item);
                         }

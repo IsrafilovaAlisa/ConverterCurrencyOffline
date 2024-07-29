@@ -2,7 +2,7 @@
 
 namespace utf.Models
 {
-    public class Purchases
+    public class PurchasesModel
     {
         /// <summary> модель для страницы с журналом покупок </summary>
         [PrimaryKey, AutoIncrement]

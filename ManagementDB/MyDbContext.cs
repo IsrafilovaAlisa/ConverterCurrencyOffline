@@ -6,8 +6,8 @@ namespace utf.ManagementDB
 {
     public class MyDbContext : DbContext
     {
-        public DbSet<Purchases> Purchases { get; set; }
-        public DbSet<ConvertCurrencyModel> ConvertCurrency { get; set; }
+        public DbSet<PurchasesModel> Purchases { get; set; }
+        public DbSet<SaveDBConvertModel> ConvertCurrency { get; set; }
         public MyDbContext()
         {
             //При добавлении новых функций/свойств/др. фич раскоментировать строку ниже для удаления существующей бд 

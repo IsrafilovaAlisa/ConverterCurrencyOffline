@@ -5,7 +5,7 @@ using utf.Service;
 namespace utf.Models
 {
     /// <summary> модель для сохранения в базу журнала конвертированных валют </summary>
-    public class ConvertCurrencyModel
+    public class SaveDBConvertModel
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }

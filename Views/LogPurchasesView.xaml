@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Layouts;assembly=CommunityToolkit.Maui"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    x:Class="utf.Views.FramePurchases"
+    x:Class="utf.Views.LogPurchasesView"
     Title="Журнал покупок">
     <Grid>
         <toolkit:DockLayout ShouldExpandLastChild="True">

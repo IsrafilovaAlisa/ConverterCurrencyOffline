@@ -40,7 +40,7 @@ namespace utf.ViewModels
         // public ObservableCollection<string> MagazineConversions { get; set; } = new();
 
         public static MainPageViewModel Instance = new MainPageViewModel();
-        public ObservableCollection<ConvertCurrencyModel> MagazineConversionsDB { get; set; } = new();
+        public ObservableCollection<SaveDBConvertModel> MagazineConversionsDB { get; set; } = new();
 
         public MainPageViewModel()
         {
@@ -60,7 +60,7 @@ namespace utf.ViewModels
                 //ConvertedCurrency = ConvertedInputPrice;
                 ConvertedCurrency = Converting;
                 
-                var MagazineConvert = new ConvertCurrencyModel { RUB = InputAmount, CurrencyFrom = FromSelectedTargetCurrency, OtherCurrency = ConvertedCurrency, CurrencyTo = WhereSelectedTargetCurrency };
+                var MagazineConvert = new SaveDBConvertModel { RUB = InputAmount, CurrencyFrom = FromSelectedTargetCurrency, OtherCurrency = ConvertedCurrency, CurrencyTo = WhereSelectedTargetCurrency };
                 Save(MagazineConvert);
                 MagazineConversionsDB.Add(MagazineConvert);
             }
@@ -70,7 +70,7 @@ namespace utf.ViewModels
         /// Метод для сохранения значений в бд
         /// </summary>
         /// <param name="model">запись строк</param>
-        public void Save(ConvertCurrencyModel model)
+        public void Save(SaveDBConvertModel model)
         {
             using (MyDbContext context = new MyDbContext())
             {
