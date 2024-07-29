@@ -9,7 +9,7 @@ namespace utf
             InitializeComponent();
 
             Routing.RegisterRoute("Settings", typeof(SettingsView));
-            Routing.RegisterRoute("LocalPurchases", typeof(FramePurchases));
+            Routing.RegisterRoute("LocalPurchases", typeof(LogPurchasesView));
            
         }
        

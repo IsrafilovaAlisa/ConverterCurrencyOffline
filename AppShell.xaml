@@ -18,7 +18,7 @@
             Route="Settings"/>
         <ShellContent
             Title="Журнал покупок"
-            ContentTemplate="{DataTemplate local:Views.FramePurchases}"
+            ContentTemplate="{DataTemplate local:Views.LogPurchasesView}"
             Route="LocalPurchases"/>
     </TabBar>
 
