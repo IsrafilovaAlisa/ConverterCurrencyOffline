@@ -11,7 +11,6 @@ namespace utf.Models
         public int ID { get; set; }
         public double? RUB { get; set; }
         public double? OtherCurrency { get; set; }
-
         public string CurrencyFrom { get; set; }
         public string CurrencyTo { get; set; }
 

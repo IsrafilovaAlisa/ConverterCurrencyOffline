@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace utf
+namespace utf.Classes
 {
-    public class ThemeChangedMessage: ValueChangedMessage<string>
+    public class ThemeChangedMessage : ValueChangedMessage<string>
     {
-        public ThemeChangedMessage(string value): base(value) { }
+        public ThemeChangedMessage(string value) : base(value) { }
     }
 }

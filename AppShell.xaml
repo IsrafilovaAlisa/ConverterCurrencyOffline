@@ -10,15 +10,15 @@
     <TabBar>
         <ShellContent
             Title="Главная страница"
-            ContentTemplate="{DataTemplate local:MainPage}"
+            ContentTemplate="{DataTemplate local:Views.MainPage}"
             Route="MainPage"/>
         <ShellContent
             Title="Настройки"
-            ContentTemplate="{DataTemplate local:Service.SettingsView}"
+            ContentTemplate="{DataTemplate local:Views.SettingsView}"
             Route="Settings"/>
         <ShellContent
-            Title="МОИ Покупки"
-            ContentTemplate="{DataTemplate local:DataBase.FramePurchases}"
+            Title="Журнал покупок"
+            ContentTemplate="{DataTemplate local:Views.FramePurchases}"
             Route="LocalPurchases"/>
     </TabBar>
 

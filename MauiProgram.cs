@@ -1,9 +1,5 @@
 ﻿using CommunityToolkit.Maui;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using utf.AlertPopup;
-using utf.DataBase;
-using utf.Service;
 
 namespace utf
 {

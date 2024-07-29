@@ -1,18 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Net.Http.Headers;
-using System.Windows.Input;
 using utf.Service;
-using utf.DataBase;
 using utf.Models;
 using utf.AlertPopup;
 using CommunityToolkit.Maui.Views;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using utf.ManagementDB;
 
-namespace utf
+namespace utf.ViewModels
 {
     public partial class MainPageViewModel : ObservableObject
     {
@@ -69,7 +64,7 @@ namespace utf
                 Save(MagazineConvert);
                 MagazineConversionsDB.Add(MagazineConvert);
             }
-            else Application.Current.MainPage.ShowPopup(new FirstPopup()); 
+            else Application.Current.MainPage.ShowPopup(new InputValueError()); 
         }
         /// <summary>
         /// Метод для сохранения значений в бд

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Messaging;
-namespace utf.Service;
+using utf.Classes;
+namespace utf.ViewModels;
 
 public partial class SettingsViewModel: ObservableObject
 {

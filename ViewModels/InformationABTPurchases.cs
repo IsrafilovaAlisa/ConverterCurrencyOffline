@@ -6,8 +6,9 @@ using System.Net.Http.Json;
 using System.Windows.Input;
 using utf.Service;
 using utf.Models;
+using utf.ManagementDB;
 
-namespace utf.DataBase
+namespace utf.ViewModels
 {
     public partial class InformationABTPurchases : ObservableObject
     {

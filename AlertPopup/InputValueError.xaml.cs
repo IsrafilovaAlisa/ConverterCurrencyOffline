@@ -2,9 +2,9 @@ using CommunityToolkit.Maui.Views;
 
 namespace utf.AlertPopup;
 
-public partial class FirstPopup : Popup
+public partial class InputValueError : Popup
 {
-	public FirstPopup()
+	public InputValueError()
 	{
 		InitializeComponent();
     }

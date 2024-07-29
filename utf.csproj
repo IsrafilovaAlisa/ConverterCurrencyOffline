@@ -83,10 +83,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="AlertPopup\FirstPopup.xaml">
+	  <Compile Update="AlertPopup\InputValueError.xaml.cs">
+	    <DependentUpon>InputValueError.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="AlertPopup\InputValueError.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="DataBase\FramePurchases.xaml">
+	  <MauiXaml Update="Views\FramePurchases.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\GeneralStyles.xaml">
@@ -98,7 +104,7 @@
 	  <MauiXaml Update="Resources\Themes\LightTheme.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Service\SettingsView.xaml">
+	  <MauiXaml Update="Views\SettingsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

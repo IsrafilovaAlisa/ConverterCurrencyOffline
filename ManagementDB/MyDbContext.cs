@@ -2,7 +2,7 @@
 using utf.Models;
 
 
-namespace utf.DataBase
+namespace utf.ManagementDB
 {
     public class MyDbContext : DbContext
     {
@@ -10,6 +10,7 @@ namespace utf.DataBase
         public DbSet<ConvertCurrencyModel> ConvertCurrency { get; set; }
         public MyDbContext()
         {
+            //При добавлении новых функций/свойств/др. фич раскоментировать строку ниже для удаления существующей бд 
             //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
