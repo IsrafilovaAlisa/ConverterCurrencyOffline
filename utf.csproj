@@ -21,7 +21,7 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>ConvertMagazine</ApplicationTitle>
+		<ApplicationTitle>Converter</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.utf</ApplicationId>

@@ -50,13 +50,14 @@ namespace utf.ViewModels
         [RelayCommand]
         public void SavePurchase()
         {
-            if (string.IsNullOrEmpty(InputPurchase) == false || InputPrice == 1 == false)
+            if (string.IsNullOrEmpty(InputPurchase) == false)
             {
                 if (SelectedConvertation == null)
                 {
                     var newPurchase1 = new PurchasesModel { Purchase = InputPurchase, PriceRUB = InputPrice, PriceConverted = 0, DatePurchase = DateTime.Now };
                     Save(newPurchase1);
                     DataPurchases.Add(newPurchase1);
+
                 }
                 else
                 {
@@ -76,7 +77,7 @@ namespace utf.ViewModels
             {
                 //context.Purchases.RemoveRange(context.Purchases);
                 //context.SaveChanges();
-                
+
                 DataPurchases.Clear();
                 foreach (var element in context.Purchases)
                 {
