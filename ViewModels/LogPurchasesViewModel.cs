@@ -1,9 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Net.Http.Json;
-using System.Windows.Input;
 using utf.Service;
 using utf.Models;
 using utf.ManagementDB;
@@ -46,27 +43,14 @@ namespace utf.ViewModels
                 context.SaveChanges();
             }
         }
-
         [RelayCommand]
         public void SavePurchase()
         {
             if (string.IsNullOrEmpty(InputPurchase) == false)
             {
-                if (SelectedConvertation == null)
-                {
-                    var newPurchase1 = new PurchasesModel { Purchase = InputPurchase, PriceRUB = InputPrice, PriceConverted = 0, DatePurchase = DateTime.Now };
-                    Save(newPurchase1);
-                    DataPurchases.Add(newPurchase1);
-
-                }
-                else
-                {
-                    var ConvertedInputPrice = CurrencyConverter.Convert(InputPrice, SelectedConvertation.ToString());
-
-                    var newPurchase = new PurchasesModel { Purchase = InputPurchase, PriceRUB = InputPrice, PriceConverted = ConvertedInputPrice, DatePurchase = DateTime.Now };
-                    Save(newPurchase);
-                    DataPurchases.Add(newPurchase);
-                }
+                var newPurchase1 = new PurchasesModel { Purchase = InputPurchase, PriceRUB = InputPrice, PriceConverted = 0, DatePurchase = DateTime.Now };
+                Save(newPurchase1);
+                DataPurchases.Add(newPurchase1);
             }
         }
         /// <summary> История покупок </summary>
@@ -85,6 +69,7 @@ namespace utf.ViewModels
                 }
             }
         }
+        /// <summary> Удаление покупки/ок </summary>
         [RelayCommand]
         public void DeleteElementHistory()
         {

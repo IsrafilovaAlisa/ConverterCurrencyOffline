@@ -11,13 +11,13 @@
             </StackLayout>
             <FlexLayout Margin="5,5" Wrap="Wrap">
                 <StackLayout Orientation="Vertical">
-                     <Entry Text="{Binding InputAmount}" FontSize="20" Placeholder="Введите сумму"/>
-                <Label FontSize="25" Text="Выберите валюту:"/>
-                <Picker SelectedItem="{Binding FromSelectedTargetCurrency}"  ItemsSource="{Binding CurrencyConverter.KeysOtherCurrency}" Margin="3"/>
-                <Label FontSize="25" Text="Выберите в какую валюту перевести:"/>
-                <Picker SelectedItem="{Binding WhereSelectedTargetCurrency}" ItemsSource="{Binding CurrencyConverter.KeysOtherCurrency}" Margin="3"/>
+                    <Entry Text="{Binding InputAmount}" FontSize="20" Placeholder="Введите сумму"/>
+                    <Label FontSize="25" Text="Выберите валюту:"/>
+                    <Picker SelectedItem="{Binding FromSelectedTargetCurrency}"  ItemsSource="{Binding CurrencyConverter.KeysOtherCurrency}" Margin="3"/>
+                    <Label FontSize="25" Text="Выберите в какую валюту перевести:"/>
+                    <Picker SelectedItem="{Binding WhereSelectedTargetCurrency}" ItemsSource="{Binding CurrencyConverter.KeysOtherCurrency}" Margin="3"/>
                 </StackLayout>
-               
+
             </FlexLayout>
             <StackLayout Margin="5,5" Orientation="Vertical">
                 <Button Text="Конвертация" Command="{Binding StartConvertCommand}"/>
@@ -35,7 +35,5 @@
                 </CollectionView>
             </StackLayout>
         </StackLayout>
-       
     </ScrollView>
-
 </ContentPage>

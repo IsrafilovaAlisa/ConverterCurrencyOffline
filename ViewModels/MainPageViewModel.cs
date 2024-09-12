@@ -29,16 +29,10 @@ namespace utf.ViewModels
         /// <summary> Конвертированная валюта </summary>
         [ObservableProperty]
         public double convertedCurrency;
-        /// <summary> Показ конвертированной валюты </summary>
-        //[ObservableProperty]
-        //public bool visibleConvertedCurrency = true;
         /// <summary> После нажатия кнопки конвертации, значение MoneyInRUB сохраняется в этом свойстве как журнал</summary>
         [ObservableProperty]
         public double showConvertFromRUB;
-
         public CurrencyConverter CurrencyConverter { get; }
-        // public ObservableCollection<string> MagazineConversions { get; set; } = new();
-
         public static MainPageViewModel Instance = new MainPageViewModel();
         public ObservableCollection<SaveDBConvertModel> MagazineConversionsDB { get; set; } = new();
 
@@ -47,7 +41,6 @@ namespace utf.ViewModels
             CurrencyConverter = new();
             MagazineConvert();
         }
-       
         /// <summary> Метод для перевода рублей в целевую валюту </summary>
         [RelayCommand]
         public void StartConvert()
@@ -60,7 +53,10 @@ namespace utf.ViewModels
                 //ConvertedCurrency = ConvertedInputPrice;
                 ConvertedCurrency = Converting;
                 
-                var MagazineConvert = new SaveDBConvertModel { RUB = InputAmount, CurrencyFrom = FromSelectedTargetCurrency, OtherCurrency = ConvertedCurrency, CurrencyTo = WhereSelectedTargetCurrency };
+                var MagazineConvert = new SaveDBConvertModel { RUB = InputAmount
+                    , CurrencyFrom = FromSelectedTargetCurrency
+                    , OtherCurrency = ConvertedCurrency
+                    , CurrencyTo = WhereSelectedTargetCurrency };
                 Save(MagazineConvert);
                 MagazineConversionsDB.Add(MagazineConvert);
             }
@@ -78,15 +74,12 @@ namespace utf.ViewModels
                 context.SaveChanges();
             }
         }
-
         /// <summary> журнал конвертаций </summary>
         public void MagazineConvert()
         {
             using (MyDbContext context = new MyDbContext())
             {
                 MagazineConversionsDB.Clear();
-                //context.ConvertCurrency.RemoveRange(context.ConvertCurrency);
-                //context.SaveChanges();
                 foreach (var element in context.ConvertCurrency)
                 {
                     MagazineConversionsDB.Add(element);

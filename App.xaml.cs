@@ -12,9 +12,7 @@ namespace utf
             MainPage = new AppShell();
             WeakReferenceMessenger.Default.Register<ThemeChangedMessage>(this, (r, m) =>
             {
-                //var b = (App)r;
                 if (r is App b) b.LoadTheme(m.Value);
-                //LoadTheme(m.Value);
             });
 
             var theme = Preferences.Get("theme", "System");
@@ -36,8 +34,6 @@ namespace utf
             {
                 "Dark" => new Resources.Themes.DarkTheme(),
                 "Light" => new Resources.Themes.LightTheme(),
-                //"DarkTheme" => new Resources.Themes.DarkTheme(),
-                //"LightTheme" => new Resources.Themes.LightTheme()
             };
             if(dictionary != null )
             {

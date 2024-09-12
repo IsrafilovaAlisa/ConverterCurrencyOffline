@@ -3,24 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="utf.Views.SettingsView"
              Title="Настройки приложения">
-    <!--<StackLayout Orientation="Vertical">
-        <StackLayout Padding="10" Orientation="Horizontal">
-            <Label FontSize="30" Text="Светлая тема"/>
-            <Switch IsToggled="{Binding LightThemeColor}" VerticalOptions="Start"/>
-        </StackLayout>
-        <StackLayout Padding="10" Orientation="Horizontal">
-            <Label FontSize="30" Text="Темная тема"/>
-            <Switch IsToggled="{Binding DarkThemeColor}" VerticalOptions="Start"/>
-        </StackLayout>
-    </StackLayout>-->
     <ScrollView Padding="20">
         <VerticalStackLayout>
-
             <Label Text="Тема:" />
             <Picker ItemsSource="{Binding Themes}"
                     SelectedItem="{Binding SelectedTheme}"
                     ItemDisplayBinding="{Binding Name}"/>
-
         </VerticalStackLayout>
     </ScrollView>
 

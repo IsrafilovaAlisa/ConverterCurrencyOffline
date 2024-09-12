@@ -2,23 +2,6 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="utf.Resources.Themes.DarkTheme">
-    <!--<Color x:Key="PageBackgroundColor">Black</Color>
-    <Color x:Key="NavigationBarColor">Teal</Color>
-    <Color x:Key="PrimaryColor">Teal</Color>
-    <Color x:Key="SecondaryColor">White</Color>
-    <Color x:Key="PrimaryTextColor">White</Color>
-    <Color x:Key="SecondaryTextColor">White</Color>
-    <Color x:Key="TertiaryTextColor">WhiteSmoke</Color>
-    <Color x:Key="TransparentColor">Transparent</Color>-->
-
-    <!--<Color x:Key="PrimaryColor">#4169E1</Color>
-    <Color x:Key="PrimaryColorLight">#6A82DC</Color>
-    <Color x:Key="PrimaryColorDark">#1C4592</Color>
-    <Color x:Key="BackgroundColor">#E5E5E5</Color>
-    <Color x:Key="BackgroundColorLight">#fff</Color>
-    <Color x:Key="BackgroundColorDark">#CCCCCC</Color>
-    <Color x:Key="TextColorPrimary">black</Color>-->
-
     <Color x:Key="PrimaryColor">#4169E1</Color>
     <Color x:Key="PrimaryColorLight">#6A82DC</Color>
     <Color x:Key="BackgroundColorLight">#545454</Color>

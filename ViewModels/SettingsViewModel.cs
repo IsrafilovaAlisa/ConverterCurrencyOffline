@@ -29,9 +29,6 @@ public partial class SettingsViewModel: ObservableObject
         var theme = Preferences.Get("theme", "System").ToString();
         SelectedTheme = Themes.Single(x => x.Key == theme);
     }
-
-    
-
     partial void OnSelectedThemeChanged(Theme value)
     {
         if (value == null)
@@ -43,8 +40,6 @@ public partial class SettingsViewModel: ObservableObject
 
         WeakReferenceMessenger.Default.Send(new ThemeChangedMessage(value.Key));
     }
-
-
 }
 public class Theme
 {
